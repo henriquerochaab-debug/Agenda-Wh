@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WH Studio — Agende seu horário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="logo-icon.png">
+<link rel="stylesheet" href="agenda.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html"><img src="logo-icon.png" alt="WH Studio"><span>WH STUDIO</span></a>
+  <nav>
+    <a href="#agendar">Agendar</a>
+    <button id="btnAdmin" class="link">Painel</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Seu horário reservado em menos de um minuto.</h1>
+    <p>Escolha o serviço, o dia e a hora. A confirmação chega direto no WhatsApp da WH Studio.</p>
+    <a class="btn" href="#agendar">Agendar agora</a>
+  </section>
+
+  <section id="agendar" class="booking">
+    <ol class="steps" id="steps">
+      <li class="on">Serviço</li><li>Data</li><li>Horário</li><li>Seus dados</li>
+    </ol>
+
+    <div class="panel" data-step="1">
+      <h2>Qual serviço você quer?</h2>
+      <div class="services" id="services"></div>
+    </div>
+
+    <div class="panel" data-step="2" hidden>
+      <h2>Escolha o dia</h2>
+      <div class="cal">
+        <div class="cal-head">
+          <button class="icon" id="prev" aria-label="Mês anterior">‹</button>
+          <strong id="monthLabel"></strong>
+          <button class="icon" id="next" aria-label="Próximo mês">›</button>
+        </div>
+        <div class="grid week" id="week"></div>
+        <div class="grid" id="days"></div>
+      </div>
+      <button class="ghost back">Voltar</button>
+    </div>
+
+    <div class="panel" data-step="3" hidden>
+      <h2>Horários disponíveis em <span id="dateLabel"></span></h2>
+      <div class="slots" id="slots"></div>
+      <button class="ghost back">Voltar</button>
+    </div>
+
+    <div class="panel" data-step="4" hidden>
+      <h2>Quase lá</h2>
+      <div class="resume" id="resume"></div>
+      <div class="fields">
+        <label>Nome<input id="name" autocomplete="name" placeholder="Seu nome completo"></label>
+        <label>WhatsApp<input id="phone" type="tel" autocomplete="tel" placeholder="(79) 90000-0000"></label>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <div class="row">
+        <button class="ghost back">Voltar</button>
+        <button class="btn" id="confirm">Confirmar agendamento</button>
+      </div>
+    </div>
+
+    <div class="panel done" data-step="5" hidden>
+      <h2>Agendamento confirmado</h2>
+      <p id="doneText"></p>
+      <a class="btn" id="wa" target="_blank" rel="noopener">Enviar confirmação no WhatsApp</a>
+      <button class="ghost" id="again">Fazer outro agendamento</button>
+    </div>
+  </section>
+</main>
+
+<dialog id="admin">
+  <div class="admin-head"><h2>Agendamentos</h2><button class="icon" id="closeAdmin" aria-label="Fechar">×</button></div>
+  <div id="adminLogin">
+    <label>Senha do painel<input id="pin" type="password" placeholder="Digite a senha"></label>
+    <button class="btn" id="enter">Entrar</button>
+  </div>
+  <div id="adminList" hidden></div>
+</dialog>
+
+<footer>© WH Studio</footer>
+<script src="agenda.js"></script>
+</body>
+</html>
